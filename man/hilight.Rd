@@ -4,11 +4,11 @@
 \alias{hilight}
 \title{Syntax highlight an R code fragment}
 \usage{
-hilight(code, format = c("latex", "html"), markup)
+hilight(code, format = c("latex", "html"), markup, prompt = FALSE)
 
-hi_latex(code)
+hi_latex(code, ...)
 
-hi_html(code)
+hi_html(code, ...)
 }
 \arguments{
   \item{code}{a character string (the R source code)}
@@ -17,11 +17,13 @@ hi_html(code)
 
   \item{markup}{a data frame of two columns containing the
   markup commands}
+
+  \item{prompt}{whether to add prompts to the code}
+
+  \item{...}{arguments to be passed to \code{hilight()}}
 }
 \value{
-  A character string for the syntax highlighted code; its
-  length is equal to the number of lines of the source
-  code.
+  A character vector for the syntax highlighted code.
 }
 \description{
   This function \code{\link{parse}}s the R code, fetches
