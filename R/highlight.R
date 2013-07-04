@@ -128,8 +128,8 @@ hilight = function(code, format = c('latex', 'html'), markup) {
 
   unlist(lapply(split(res, res$line1), function(d) {
     col = as.matrix(d[, c('col1', 'col2')])
-    # add 1 and remove col[n, 2] to get start/end positions of spaces
-    col = matrix(head(c(1, t(col)), -1), ncol = 2, byrow = TRUE)
+    # add 0 and remove col[n, 2] to get start/end positions of spaces
+    col = matrix(head(c(0, t(col)), -1), ncol = 2, byrow = TRUE)
     paste(mapply(spaces, col[, 2] - col[, 1] - 1), d[, 6], d[, 'text'], d[, 7],
           sep = '', collapse = '')
   }), use.names = FALSE)
