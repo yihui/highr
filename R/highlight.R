@@ -129,10 +129,10 @@ hilight = function(code, format = c('latex', 'html'), markup) {
 }
 #' @export
 #' @rdname hilight
-hi_latex = function(code) hilight(code, 'latex')
+hi_latex = function(code, ...) hilight(code, 'latex', ...)
 #' @export
 #' @rdname hilight
-hi_html = function(code) hilight(code, 'html')
+hi_html = function(code, ...) hilight(code, 'html', ...)
 
 #' A wrapper to Andre Simon's Highlight
 #'
