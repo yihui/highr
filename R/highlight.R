@@ -112,18 +112,11 @@ hilight = function(code, format = c('latex', 'html'), markup) {
   # escape special LaTeX/HTML chars
   res$text = do.call(paste('escape', format, sep = '_'), list(res$text))
 
-  # e.g. a string spans across multiple lines; now need to make up an extra row
-  # so that we know the starting and ending positions of spaces; e.g. turn
-  # line/col numbers 1 5 2 6 into 1 5 1 5 and 2 1 2 6
-  if (length(idx <- which(res$line1 != res$line2))) {
-    for (i in idx) {
-      d1 = d2 = res[i, ]
-      d1[, -(1:2)] = data.frame(line2 = d1[, 1], col2 = d1[, 2], text = '', cmd1 = '', cmd2 = '')
-      d2[, 1:2] = data.frame(line1 = d2[, 3], col1 = 1L)
-      res[i, ] = d1
-      res = rbind(res, d2)
-    }
-    res = res[order(res$line1, res$col1), ]
+  # e.g. a string spans across multiple lines; now need to replace line1 with
+  # line2 so that we know the starting and ending positions of spaces; e.g. turn
+  # line/col numbers 1 5 2 6 into 2 5 2 6
+  for (i in which(res$line1 != res$line2)) {
+    res$line1[res$line1 == res$line1[i]] = res$line2[i]
   }
 
   unlist(lapply(split(res, res$line1), function(d) {
