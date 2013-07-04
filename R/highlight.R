@@ -120,6 +120,12 @@ hilight = function(code, format = c('latex', 'html'), markup) {
   }
 
   unlist(lapply(split(res, res$line1), function(d) {
+    # merge adjacent tokens of the same type so that the output is cleaner
+    empty = matrix(FALSE, nrow = nrow(d), ncol = 2)
+    for (i in seq_len(nrow(d) - 1)) {
+      if (all(d[i, 6:7] == d[i + 1, 6:7])) empty[i + 1, 1] = empty[i, 2] = TRUE
+    }
+    d[, 6:7][empty] = ''
     col = as.matrix(d[, c('col1', 'col2')])
     # add 0 and remove col[n, 2] to get start/end positions of spaces
     col = matrix(head(c(0, t(col)), -1), ncol = 2, byrow = TRUE)
