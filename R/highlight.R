@@ -70,6 +70,8 @@ merge_cmd = function(pdata, cmd) {
 #' @param code a character string (the R source code)
 #' @param format the output format
 #' @param markup a data frame of two columns containing the markup commands
+#' @param prompt whether to add prompts to the code
+#' @param ... arguments to be passed to \code{hilight()}
 #' @author Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
 #'   <\url{http://yixuan.cos.name}>
 #' @seealso The \pkg{highlight} package is a more comphrehensive package, which
@@ -92,24 +94,37 @@ merge_cmd = function(pdata, cmd) {
 #' # the markup data frames
 #' highr:::cmd_latex; highr:::cmd_html
 #' @export
-hilight = function(code, format = c('latex', 'html'), markup) {
+hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE) {
+  format = match.arg(format)
+  if (missing(markup))
+    markup = getFromNamespace(paste('cmd', format, sep = '_'), 'highr')
+  escape_fun = getFromNamespace(paste('escape', format, sep = '_'), 'highr')
+  if (!prompt) return(hilight_one(code, format, markup, escape_fun))
+  p1 = escape_fun(getOption('prompt')); p2 = escape_fun(getOption('continue'))
+  std = unlist(markup['STANDARD', ])
+  if (!any(is.na(std))) {
+    p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
+  }
+  sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
+                SIMPLIFY = FALSE, USE.NAMES = FALSE),
+         function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))
+}
+# highlight one expression
+hilight_one = function(code, format, markup, escape_fun) {
 
   # the data frames do not need factors in this function
   op = options(stringsAsFactors = FALSE); on.exit(options(op))
 
-  format = match.arg(format)
   p = parse(text = code, keep.source = TRUE)
   if (length(p) == 0L) return(code)
   z = getParseData(p)
   if (NROW(z) == 0L || !any(z$terminal)) return(x)
   z = z[z$terminal, ]
 
-  if (missing(markup))
-    markup = getFromNamespace(paste('cmd', format, sep = '_'), 'highr')
   res = cbind(z[, c('line1', 'col1', 'line2', 'col2', 'text')], merge_cmd(z, markup))
 
   # escape special LaTeX/HTML chars
-  res$text = do.call(paste('escape', format, sep = '_'), list(res$text))
+  res$text = escape_fun(res$text)
 
   # e.g. a string spans across multiple lines; now need to replace line1 with
   # line2 so that we know the starting and ending positions of spaces; e.g. turn
