@@ -78,8 +78,7 @@ merge_cmd = function(pdata, cmd) {
 #'
 #'   See the package vignette \code{browseVignettes('highr')} for how this
 #'   function works internally.
-#' @return A character string for the syntax highlighted code; its length is
-#'   equal to the number of lines of the source code.
+#' @return A character vector for the syntax highlighted code.
 #' @examples library(highr)
 #' hilight("x=1 # assignment")
 #'
