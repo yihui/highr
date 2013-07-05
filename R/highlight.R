@@ -118,7 +118,7 @@ hilight_one = function(code, format, markup, escape_fun) {
   p = parse(text = code, keep.source = TRUE)
   if (length(p) == 0L) return(code)
   z = getParseData(p)
-  if (NROW(z) == 0L || !any(z$terminal)) return(x)
+  if (NROW(z) == 0L || !any(z$terminal)) return(code)
   z = z[z$terminal, ]
 
   res = cbind(z[, c('line1', 'col1', 'line2', 'col2', 'text')], merge_cmd(z, markup))
