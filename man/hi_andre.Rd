@@ -19,6 +19,12 @@ hi_andre(code, language, format = "html")
   This function calls Highlight to syntax highlight a code
   fragment.
 }
+\examples{
+\dontrun{
+hi_andre("1+1", language = "R")
+hi_andre("void main() {\\nreturn(0)\\n}", language = "c", format = "latex")
+}
+}
 \references{
   Andre Simon's Highlight package
   \url{http://www.andre-simon.de}.

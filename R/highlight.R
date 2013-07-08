@@ -165,6 +165,8 @@ hi_html = function(code, ...) hilight(code, 'html', ...)
 #' @references Andre Simon's Highlight package \url{http://www.andre-simon.de}.
 #' @return A character string for the syntax highlighted code.
 #' @export
+#' @examples \dontrun{hi_andre('1+1', language='R')
+#' hi_andre('void main() {\nreturn(0)\n}', language='c', format='latex')}
 hi_andre = function(code, language, format = 'html') {
   if (!nzchar(Sys.which('highlight')))
     stop('please first install highlight from http://www.andre-simon.de')
