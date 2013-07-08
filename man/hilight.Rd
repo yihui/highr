@@ -77,6 +77,6 @@ highr:::cmd_html
   The \pkg{knitr} package uses \pkg{highr} when it is
   available.
 
-  See the package vignette \code{browseVignettes('highr')}
+  See the package vignettes \code{browseVignettes('highr')}
   for how this function works internally.
 }

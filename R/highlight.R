@@ -78,7 +78,7 @@ merge_cmd = function(pdata, cmd) {
 #'   ships syntax highlighting themes as well. The \pkg{knitr} package uses
 #'   \pkg{highr} when it is available.
 #'
-#'   See the package vignette \code{browseVignettes('highr')} for how this
+#'   See the package vignettes \code{browseVignettes('highr')} for how this
 #'   function works internally.
 #' @return A character vector for the syntax highlighted code.
 #' @examples library(highr)
