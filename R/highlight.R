@@ -105,6 +105,7 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE) {
   if (!any(is.na(std))) {
     p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
   }
+  code = group_src(code)
   sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
                 SIMPLIFY = FALSE, USE.NAMES = FALSE),
          function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))
