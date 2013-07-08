@@ -1,8 +1,8 @@
 Package: highr
 Type: Package
 Title: Syntax highlighting for R
-Version: 0.0.2
-Date: 2013-07-04
+Version: 0.1
+Date: 2013-07-09
 Author: Yihui Xie and Yixuan Qiu
 Maintainer: Yihui Xie <xie@yihui.name>
 Description: This package provides syntax highlighting for R source code.
