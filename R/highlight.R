@@ -105,8 +105,8 @@ R3 = getRversion() >= '3.0.0'
 hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = NA) {
   format = match.arg(format)
   if (missing(markup))
-    markup = getFromNamespace(paste('cmd', format, sep = '_'), 'highr')
-  escape_fun = getFromNamespace(paste('escape', format, sep = '_'), 'highr')
+    markup = if (format == 'latex') cmd_latex else cmd_html
+  escape_fun = if (format == 'latex') escape_latex else escape_html
   if (is.na(fallback)) fallback = !R3
   if (!prompt) return(
     (if (fallback) hi_naive else hilight_one)(code, format, markup, escape_fun)
