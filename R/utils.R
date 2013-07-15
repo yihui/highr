@@ -30,7 +30,7 @@ try_parse = function(code) {
 # borrowed from knitr
 
 # escape backslashes and {} for the alltt package
-escape_latex = function(x, newlines = FALSE, spaces = FALSE) {
+escape_latex = function(x) {
   x = gsub('\\\\', '\\\\textbackslash', x)
   x = gsub('([{}])', '\\\\\\1', x)
   gsub('\\\\textbackslash', '\\\\textbackslash{}', x)
