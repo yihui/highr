@@ -1,0 +1,7 @@
+        CHANGES IN highr VERSION 0.1
+
+NEW FEATURES
+
+  o the first version of highr: a hilight() function based on
+  utils::getParseData() to do syntax highlighting for R code; hi_andrew() as
+  a wrapper for Andre Simon's Highlight package
