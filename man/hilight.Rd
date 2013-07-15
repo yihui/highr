@@ -4,7 +4,7 @@
 \alias{hilight}
 \title{Syntax highlight an R code fragment}
 \usage{
-hilight(code, format = c("latex", "html"), markup, prompt = FALSE)
+hilight(code, format = c("latex", "html"), markup, prompt = FALSE, fallback = NA)
 
 hi_latex(code, ...)
 
@@ -19,6 +19,14 @@ hi_html(code, ...)
   markup commands}
 
   \item{prompt}{whether to add prompts to the code}
+
+  \item{fallback}{whether to use the fallback method, i.e.
+  the regular expression based method when the R version is
+  smaller than 3.0.0 and \code{getParseData()} is
+  unavailable; this method is not precise and only
+  highlights a few types of symbols such as comments,
+  strings and functions; by default, \code{fallback =
+  getRversion < '3.0.0'}}
 
   \item{...}{arguments to be passed to \code{hilight()}}
 }
