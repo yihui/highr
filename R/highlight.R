@@ -46,6 +46,9 @@ merge_cmd = function(pdata, cmd) {
   res
 }
 
+# getParseData() came from R 3.0; for R < 3.0, use the fallback method
+R3 = getRversion() >= '3.0.0'
+
 #' Syntax highlight an R code fragment
 #'
 #' This function \code{\link{parse}}s the R code, fetches the tokens in it
@@ -71,6 +74,11 @@ merge_cmd = function(pdata, cmd) {
 #' @param format the output format
 #' @param markup a data frame of two columns containing the markup commands
 #' @param prompt whether to add prompts to the code
+#' @param fallback whether to use the fallback method, i.e. the regular
+#'   expression based method when the R version is smaller than 3.0.0 and
+#'   \code{getParseData()} is unavailable; this method is not precise and only
+#'   highlights a few types of symbols such as comments, strings and functions;
+#'   by default, \code{fallback = getRversion < '3.0.0'}
 #' @param ... arguments to be passed to \code{hilight()}
 #' @author Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
 #'   <\url{http://yixuan.cos.name}>
@@ -94,18 +102,22 @@ merge_cmd = function(pdata, cmd) {
 #' # the markup data frames
 #' highr:::cmd_latex; highr:::cmd_html
 #' @export
-hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE) {
+hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = NA) {
   format = match.arg(format)
   if (missing(markup))
     markup = getFromNamespace(paste('cmd', format, sep = '_'), 'highr')
   escape_fun = getFromNamespace(paste('escape', format, sep = '_'), 'highr')
-  if (!prompt) return(hilight_one(code, format, markup, escape_fun))
+  if (is.na(fallback)) fallback = !R3
+  if (!prompt) return(
+    (if (fallback) hi_naive else hilight_one)(code, format, markup, escape_fun)
+  )
   p1 = escape_fun(getOption('prompt')); p2 = escape_fun(getOption('continue'))
   std = unlist(markup['STANDARD', ])
   if (!any(is.na(std))) {
     p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
   }
   code = group_src(code)
+  if (fallback) return(hi_naive(code, format, markup, escape_fun, c(p1, p2)))
   sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
                 SIMPLIFY = FALSE, USE.NAMES = FALSE),
          function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))

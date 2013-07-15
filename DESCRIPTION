@@ -8,8 +8,6 @@ Maintainer: Yihui Xie <xie@yihui.name>
 Description: This package provides syntax highlighting for R source code.
     Currently it supports LaTeX and HTML output. Source code of other languages
     can be supported via Andre Simon's Highlight package.
-Depends:
-    R (>= 3.0.0)
 Suggests:
     knitr,
     testit
@@ -20,3 +18,4 @@ VignetteBuilder: knitr
 Collate:
     'utils.R'
     'highlight.R'
+    'fallback.R'
