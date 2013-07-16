@@ -78,7 +78,8 @@ R3 = getRversion() >= '3.0.0'
 #'   expression based method when the R version is smaller than 3.0.0 and
 #'   \code{getParseData()} is unavailable; this method is not precise and only
 #'   highlights a few types of symbols such as comments, strings and functions;
-#'   by default, \code{fallback = getRversion < '3.0.0'}
+#'   by default, \code{fallback = getRversion < '3.0.0'}, and \code{fallback =
+#'   TRUE} when the input \code{code} fails to be \code{\link{parse}d}
 #' @param ... arguments to be passed to \code{hilight()}
 #' @author Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
 #'   <\url{http://yixuan.cos.name}>
@@ -108,6 +109,11 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
     markup = if (format == 'latex') cmd_latex else cmd_html
   escape_fun = if (format == 'latex') escape_latex else escape_html
   if (is.na(fallback)) fallback = !R3
+  if (!fallback && !try_parse(code, silent = FALSE)) {
+    # the code is not valid, so you must use the fallback mode
+    warning('the syntax of the source code is invalid; the fallback mode is used')
+    fallback = TRUE
+  }
   if (!prompt) return(
     (if (fallback) hi_naive else hilight_one)(code, format, markup, escape_fun)
   )
