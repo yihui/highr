@@ -26,6 +26,12 @@ assert(
             '\\hlkwd{paste}(\\hlstr{"STRING"}, \\hlstr{\'string\'})')
 )
 
+assert(
+  'the fallback mode is used when the code does not parse',
+  has_warning(res <- hi_latex('1+1+ # comment')),
+  identical(res, '1+1+ \\hlcom{# comment}')
+)
+
 # define one's own markup data frame
 my_cmd = cmd_html
 my_cmd['NUM_CONST', 1] = '<span class="my num">'
