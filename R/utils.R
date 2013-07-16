@@ -23,8 +23,8 @@ group_src = function(code) {
 }
 
 # whether a code expression can be parsed
-try_parse = function(code) {
-  !inherits(try(parse(text = code, keep.source = FALSE), silent = TRUE), 'try-error')
+try_parse = function(code, silent = TRUE) {
+  !inherits(try(parse(text = code, keep.source = FALSE), silent = silent), 'try-error')
 }
 
 # borrowed from knitr
