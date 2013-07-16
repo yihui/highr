@@ -34,5 +34,11 @@ hi_html("a <- 1 # something")
 This package also has a wrapper function, `hi_andre()`, for Andre Simon's
 [Highlight](http://www.andre-simon.de) package.
 
-This package is supposed to serve other packages such as
-[**knitr**](http://yihui.name/knitr).
+There are a few package Markdown vignettes in this package:
+
+```s
+browseVignettes(package = "highr")
+```
+
+This package is licensed under GPL, and is supposed to serve other packages
+such as [**knitr**](http://yihui.name/knitr).
