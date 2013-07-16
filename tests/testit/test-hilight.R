@@ -19,6 +19,13 @@ assert(
   ))
 )
 
+assert(
+  'the fallback method recognizes comments, functions and strings',
+  identical(hi_latex('1+1 # a comment', fallback = TRUE), '1+1 \\hlcom{# a comment}'),
+  identical(hi_latex('paste("STRING", \'string\')', fallback = TRUE),
+            '\\hlkwd{paste}(\\hlstr{"STRING"}, \\hlstr{\'string\'})')
+)
+
 # define one's own markup data frame
 my_cmd = cmd_html
 my_cmd['NUM_CONST', 1] = '<span class="my num">'
