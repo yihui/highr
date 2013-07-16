@@ -26,7 +26,8 @@ hi_html(code, ...)
   unavailable; this method is not precise and only
   highlights a few types of symbols such as comments,
   strings and functions; by default, \code{fallback =
-  getRversion < '3.0.0'}}
+  getRversion < '3.0.0'}, and \code{fallback = TRUE} when
+  the input \code{code} fails to be \code{\link{parse}d}}
 
   \item{...}{arguments to be passed to \code{hilight()}}
 }
