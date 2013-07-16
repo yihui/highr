@@ -6,7 +6,7 @@ This is an infrastructure R package for syntax highlighting. It supports
 LaTeX and HTML output. Not surprisingly, it works best with R code. It
 attaches markups onto source code, e.g., it turns
 
-```ruby
+```s
 a <- 1 # something
 ```
 
@@ -24,7 +24,7 @@ or HTML code
 
 via
 
-```ruby
+```s
 library(highr)
 hilight("a <- 1 # something")
 hilight("a <- 1 # something", format = "html")
