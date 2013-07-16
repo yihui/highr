@@ -26,8 +26,9 @@ via
 
 ```s
 library(highr)
-hilight("a <- 1 # something")
-hilight("a <- 1 # something", format = "html")
+hi_latex("a <- 1 # something")
+hi_html("a <- 1 # something")
+# or hilight(code, format = "latex"/"html")
 ```
 
 This package also has a wrapper function, `hi_andre()`, for Andre Simon's
