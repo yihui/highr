@@ -10,7 +10,7 @@ introduced in R 3.0.0. This function gives detailed information of the
 symbols in a code fragment. A simple example:
 
 ```{r}
-p = parse(text = '   xx = 1 + 1  # a comment', keep.source = TRUE)
+p = parse(text = "   xx = 1 + 1  # a comment", keep.source = TRUE)
 (d = getParseData(p))
 ```
 
@@ -79,7 +79,7 @@ So far so simple. That is one line of code, after all. A next challenge
 comes when there are multiple lines, and a token spans across multiple lines:
 
 ```{r}
-d = getParseData(parse(text = 'x = "a character\nstring" #hi', keep.source = TRUE))
+d = getParseData(parse(text = "x = \"a character\nstring\" #hi", keep.source = TRUE))
 (d = d[d$terminal, ])
 ```
 
