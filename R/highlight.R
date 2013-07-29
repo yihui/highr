@@ -103,12 +103,12 @@ R3 = getRversion() >= '3.0.0'
 #' # the markup data frames
 #' highr:::cmd_latex; highr:::cmd_html
 #' @export
-hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = NA) {
+hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback) {
   format = match.arg(format)
   if (missing(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
   escape_fun = if (format == 'latex') escape_latex else escape_html
-  if (is.na(fallback)) fallback = !R3
+  if (missing(fallback)) fallback = !R3
   if (!fallback && !try_parse(code, silent = FALSE)) {
     # the code is not valid, so you must use the fallback mode
     warning('the syntax of the source code is invalid; the fallback mode is used')
