@@ -4,7 +4,7 @@
 \alias{hilight}
 \title{Syntax highlight an R code fragment}
 \usage{
-hilight(code, format = c("latex", "html"), markup, prompt = FALSE, fallback = NA)
+hilight(code, format = c("latex", "html"), markup, prompt = FALSE, fallback)
 
 hi_latex(code, ...)
 
