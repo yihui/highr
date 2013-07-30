@@ -1,3 +1,10 @@
+        CHANGES IN highr VERSION 0.2.1
+
+MINOR CHANGES
+
+  o fixed a test that failed under R 2.15.x due to the keep.source argument
+  in parse(), which was not available in R until R 3.0.0
+
         CHANGES IN highr VERSION 0.2
 
 NEW FEATURES
