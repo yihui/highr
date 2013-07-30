@@ -24,7 +24,9 @@ group_src = function(code) {
 
 # whether a code expression can be parsed
 try_parse = function(code, silent = TRUE) {
-  !inherits(try(parse(text = code, keep.source = FALSE), silent = silent), 'try-error')
+  # R < 3.0.0 does not have the keep.source argument
+  op = options(keep.source = FALSE); on.exit(options(op))
+  !inherits(try(parse(text = code), silent = silent), 'try-error')
 }
 
 # borrowed from knitr
