@@ -131,10 +131,10 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
 # highlight one expression
 hilight_one = function(code, format, markup, escape_fun) {
 
-  # the data frames do not need factors in this function
-  op = options(stringsAsFactors = FALSE); on.exit(options(op))
+  # the data frames do not need factors in this function; need to keep source
+  op = options(stringsAsFactors = FALSE, keep.source = TRUE); on.exit(options(op))
 
-  p = parse(text = code, keep.source = TRUE)
+  p = parse(text = code)
   if (length(p) == 0L) return(code)
   z = utils::getParseData(p)
   if (NROW(z) == 0L || !any(z$terminal)) return(code)
