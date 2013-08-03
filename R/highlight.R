@@ -145,12 +145,19 @@ hilight_one = function(code, format, markup, escape_fun) {
   # escape special LaTeX/HTML chars
   res$text = escape_fun(res$text)
 
+  # record how many blank lines after each token
+  blanks = c(pmax(res$line1[-1] - res$line2[-nrow(res)] - 1, 0), 0)
+
   # e.g. a string spans across multiple lines; now need to replace line1 with
   # line2 so that we know the starting and ending positions of spaces; e.g. turn
   # line/col numbers 1 5 2 6 into 2 5 2 6
   for (i in which(res$line1 != res$line2)) {
     res$line1[res$line1 == res$line1[i]] = res$line2[i]
   }
+
+  # add line breaks back
+  if (any(blanks > 0))
+    res[, 7] = paste(res[, 7], mapply(spaces, blanks, '\n'), sep = '')
 
   unlist(lapply(split(res, res$line1), function(d) {
     # merge adjacent tokens of the same type so that the output is cleaner

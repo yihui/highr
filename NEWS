@@ -1,3 +1,10 @@
+        CHANGES IN highr VERSION 0.3
+
+BUG FIXES
+
+  o blank lines were not preserved in previous versions; now they can be
+  correctly preserved
+
         CHANGES IN highr VERSION 0.2.1
 
 MINOR CHANGES
