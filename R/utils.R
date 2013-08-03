@@ -1,8 +1,8 @@
 # generate spaces of width n
-spaces = function(n = 1) {
+spaces = function(n = 1, char = ' ') {
   if (n <= 0) return('')
-  if (n == 1) return(' ')
-  paste(rep(' ', n), collapse = '')
+  if (n == 1) return(char)
+  paste(rep(char, n), collapse = '')
 }
 
 # group source lines into complete expressions (using a brutal-force method)
