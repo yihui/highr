@@ -137,7 +137,9 @@ hilight_one = function(code, format, markup, escape_fun) {
   op = options(stringsAsFactors = FALSE, keep.source = TRUE); on.exit(options(op))
 
   p = parse(text = code)
-  if (length(p) == 0L) return(code)
+  # R <= 3.0.1 has a bug when code is all comments; below is for compatibility
+  if (Rversion <= '3.0.1' && length(p) == 0L)
+    return(hi_naive(code, format, markup, escape_fun))
   z = utils::getParseData(p)
   if (NROW(z) == 0L || !any(z$terminal)) return(code)
   z = z[z$terminal, ]

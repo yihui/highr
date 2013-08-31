@@ -40,6 +40,11 @@ assert(
   identical(res, '1+1+ \\hlcom{# comment}')
 )
 
+assert(
+  'hilight() works even if code only contains comments',
+  identical(hi_latex('# only comments'), '\\hlcom{# only comments}')
+)
+
 # define one's own markup data frame
 my_cmd = cmd_html
 my_cmd['NUM_CONST', 1] = '<span class="my num">'

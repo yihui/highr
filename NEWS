@@ -5,6 +5,10 @@ BUG FIXES
   o blank lines were not preserved in previous versions; now they can be
   correctly preserved
 
+  o hilight() works when the code is only a comment; fixed the bug reported
+  at http://stackoverflow.com/q/18548020/559676 which was actually due to
+  the bug of utils::getParseData() in R 3.0.1
+
         CHANGES IN highr VERSION 0.2.1
 
 MINOR CHANGES
