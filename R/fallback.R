@@ -49,6 +49,7 @@ hi_naive = function(code, format = c('latex', 'html'), markup, escape_fun = iden
 
 # split a character vector by \n
 split_lines = function(x) {
+  if (!any(grepl('\n', x))) return(x)
   x[x == ''] = '\n'
   unlist(strsplit(x, '\n'))
 }
