@@ -47,7 +47,8 @@ merge_cmd = function(pdata, cmd) {
 }
 
 # getParseData() came from R 3.0; for R < 3.0, use the fallback method
-R3 = getRversion() >= '3.0.0'
+Rversion = getRversion()
+R3 = Rversion >= '3.0.0'
 
 #' Syntax highlight an R code fragment
 #'
