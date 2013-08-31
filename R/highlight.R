@@ -104,6 +104,7 @@ R3 = getRversion() >= '3.0.0'
 #' highr:::cmd_latex; highr:::cmd_html
 #' @export
 hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback) {
+  if (length(code) == 0) return(code)
   format = match.arg(format)
   if (missing(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
