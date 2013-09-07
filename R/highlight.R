@@ -199,6 +199,11 @@ hi_andre = function(code, language, format = 'html') {
     stop('please first install highlight from http://www.andre-simon.de')
   f = basename(tempfile('code', '.'))
   writeLines(code, f); on.exit(unlink(f))
-  cmd = sprintf('highlight -f -S %s -O %s %s', language, format, f)
+  cmd = sprintf('highlight -f -S %s -O %s %s', correct_lang(language), format, f)
   system(cmd, intern = TRUE)
+}
+
+# to help knitr engines decide the highlight language
+correct_lang = function(x) {
+  switch(x, Rcpp = 'cpp', tikz = 'latex', Rscript = 'R', x)
 }
