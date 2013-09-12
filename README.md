@@ -40,5 +40,11 @@ There are a few package Markdown vignettes in this package:
 browseVignettes(package = "highr")
 ```
 
+To install the development version here, use
+
+```s
+install.packages('highr', repos = 'http://rforge.net', type = 'source')
+```
+
 This package is licensed under GPL, and is supposed to serve other packages
 such as [**knitr**](http://yihui.name/knitr).
