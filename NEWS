@@ -9,6 +9,10 @@ BUG FIXES
   at http://stackoverflow.com/q/18548020/559676 which was actually due to
   the bug of utils::getParseData() in R 3.0.1
 
+  o Linux Mint has a built-in version of highlight under /usr/local/bin/
+  which is not Andre Simon's highlight, and this can hang highr
+  (https://groups.google.com/forum/#!topic/knitr/nicYgzqhwX8)
+
         CHANGES IN highr VERSION 0.2.1
 
 MINOR CHANGES
