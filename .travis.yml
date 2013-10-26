@@ -9,9 +9,8 @@ env:
 install:
   - sudo apt-add-repository -y 'deb http://cran.rstudio.com/bin/linux/ubuntu precise/'
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
-  - sudo apt-add-repository -y ppa:marutter/c2d4u
   - sudo apt-get update
-  - sudo apt-get install r-base-dev qpdf texinfo texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
+  - sudo apt-get install r-base-dev
   - "[ ! -d ~/R ] && mkdir ~/R"
   - R --version
   - R -e '.libPaths(); sessionInfo()'
@@ -19,4 +18,4 @@ install:
 
 # run tests
 script:
-  - cd ..; rm -f *.tar.gz; R CMD build highr; R CMD check highr_*.tar.gz
+  - cd ..; rm -f *.tar.gz; R CMD build highr; R CMD check highr_*.tar.gz --as-cran --no-manual
