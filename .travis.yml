@@ -3,7 +3,7 @@ language: python
 
 # environment variables
 env:
-  - R_LIBS_USER=~/R R_MY_PKG=$(basename `pwd`)
+  - R_LIBS_USER=~/R R_MY_PKG="$(basename `pwd`)"
 
 # install dependencies
 install:
@@ -12,7 +12,7 @@ install:
   - sudo apt-get update
   - sudo apt-get install r-base-dev
   - "[ ! -d ~/R ] && mkdir ~/R"
-  - Rscript -e 'install.packages("$R_MY_PKG", dep = TRUE, repos = "http://cran.rstudio.org")'
+  - Rscript -e "install.packages('$R_MY_PKG', dep = TRUE, repos = 'http://cran.rstudio.org')"
 
 # run tests
 script:
