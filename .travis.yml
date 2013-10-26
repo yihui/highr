@@ -3,8 +3,7 @@ language: python
 
 # environment variables
 env:
-  - R_LIBS_USER=~/R
-  - R_MY_PKG=$(basename `pwd`)
+  - R_LIBS_USER=~/R R_MY_PKG=$(basename `pwd`)
 
 # install dependencies
 install:
