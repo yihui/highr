@@ -1,5 +1,5 @@
 <!--
-%\VignetteEngine{knitr::knitr}
+%\VignetteEngine{knitr::docco_classic}
 %\VignetteIndexEntry{Internals of the highr package}
 -->
 
@@ -99,7 +99,3 @@ needed to indicate the line number here.
 Why do we need to highlight line by line instead of applying highlighting
 commands to all text symbols (a.k.a vectorization)? Well, the margin of this
 paper is too small to write down the answer.
-
-```{r include=FALSE}
-options(markdown.HTML.header = system.file('misc', 'vignette.css', package='knitr'))
-```

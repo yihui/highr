@@ -13,6 +13,11 @@ BUG FIXES
   which is not Andre Simon's highlight, and this can hang highr
   (https://groups.google.com/forum/#!topic/knitr/nicYgzqhwX8)
 
+MINOR CHANGES
+
+  o the package vignettes were built with the knitr::docco_classic engine;
+  see vignette(package = 'highr')
+
         CHANGES IN highr VERSION 0.2.1
 
 MINOR CHANGES
