@@ -3,7 +3,7 @@ language: python
 
 # environment variables
 env:
-  - R_LIBS_USER=~/R R_MY_PKG="$(basename `pwd`)"
+  - R_LIBS_USER=~/R R_MY_PKG="$(basename $TRAVIS_REPO_SLUG)"
 
 # install dependencies
 install:
