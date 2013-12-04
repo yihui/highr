@@ -15,7 +15,4 @@ License: GPL
 URL: https://github.com/yihui/highr
 BugReports: https://github.com/yihui/highr/issues
 VignetteBuilder: knitr
-Collate:
-    'utils.R'
-    'highlight.R'
-    'fallback.R'
+Roxygen: list(wrap = FALSE)
