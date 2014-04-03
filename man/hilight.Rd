@@ -11,25 +11,22 @@ hi_latex(code, ...)
 hi_html(code, ...)
 }
 \arguments{
-  \item{code}{a character string (the R source code)}
+\item{code}{a character string (the R source code)}
 
-  \item{format}{the output format}
+\item{format}{the output format}
 
-  \item{markup}{a data frame of two columns containing the
-  markup commands}
+\item{markup}{a data frame of two columns containing the markup commands}
 
-  \item{prompt}{whether to add prompts to the code}
+\item{prompt}{whether to add prompts to the code}
 
-  \item{fallback}{whether to use the fallback method, i.e.
-  the regular expression based method when the R version is
-  smaller than 3.0.0 and \code{getParseData()} is
-  unavailable; this method is not precise and only
-  highlights a few types of symbols such as comments,
-  strings and functions; by default, \code{fallback =
-  getRversion < '3.0.0'}, and \code{fallback = TRUE} when
-  the input \code{code} fails to be \code{\link{parse}d}}
+\item{fallback}{whether to use the fallback method, i.e. the regular
+expression based method when the R version is smaller than 3.0.0 and
+\code{getParseData()} is unavailable; this method is not precise and only
+highlights a few types of symbols such as comments, strings and functions;
+by default, \code{fallback = getRversion < '3.0.0'}, and \code{fallback =
+TRUE} when the input \code{code} fails to be \code{\link{parse}d}}
 
-  \item{...}{arguments to be passed to \code{hilight()}}
+\item{...}{arguments to be passed to \code{hilight()}}
 }
 \value{
 A character vector for the syntax highlighted code.

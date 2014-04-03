@@ -5,12 +5,12 @@
 hi_andre(code, language, format = "html")
 }
 \arguments{
-  \item{code}{a character string of the source code}
+\item{code}{a character string of the source code}
 
-  \item{language}{the input language (c, cpp, python, r,
-  ...); see \code{system('highlight -p')}}
+\item{language}{the input language (c, cpp, python, r, ...); see
+\code{system('highlight -p')}}
 
-  \item{format}{the output format (html, latex, ...)}
+\item{format}{the output format (html, latex, ...)}
 }
 \value{
 A character string for the syntax highlighted code.
