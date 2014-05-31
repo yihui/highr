@@ -196,8 +196,11 @@ hi_html = function(code, ...) hilight(code, 'html', ...)
 #' hi_andre('void main() {\nreturn(0)\n}', language='c', format='latex')}
 hi_andre = function(code, language, format = 'html') {
   h = Sys.which('highlight')
+  os = Sys.info()[[1]]
   # highlight on Linux Mint can be something else
-  if (!nzchar(h) || (h == '/usr/local/bin/highlight' && !file.exists(h <- '/usr/bin/highlight')))
+  # on OS10 with highlight installed using Homebrew it's often in /usr/local/bin
+  if (!nzchar(h) || (h == '/usr/local/bin/highlight' && os != 'Darwin' && 
+                       !file.exists(h <- '/usr/bin/highlight')))
     stop('please first install highlight from http://www.andre-simon.de')
   f = basename(tempfile('code', '.'))
   writeLines(code, f); on.exit(unlink(f))
