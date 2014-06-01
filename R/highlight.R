@@ -196,7 +196,7 @@ hi_html = function(code, ...) hilight(code, 'html', ...)
 #' hi_andre('void main() {\nreturn(0)\n}', language='c', format='latex')}
 hi_andre = function(code, language, format = 'html') {
   h = Sys.which('highlight')
-  os = Sys.info()[[1]]
+  os = Sys.info()[['sysname']]
   # highlight on Linux Mint can be something else
   # on OS10 with highlight installed using Homebrew it's often in /usr/local/bin
   if (!nzchar(h) || (h == '/usr/local/bin/highlight' && os != 'Darwin' && 
