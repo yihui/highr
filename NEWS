@@ -1,3 +1,10 @@
+        CHANGES IN highr VERSION 0.4
+
+BUG FIXES
+
+  o hi_andre() may fail to find highlight under OS X (thanks, Christopher
+  Gandrud, #2)
+
         CHANGES IN highr VERSION 0.3
 
 BUG FIXES

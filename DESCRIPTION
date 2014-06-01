@@ -3,7 +3,9 @@ Type: Package
 Title: Syntax highlighting for R
 Version: 0.3.1
 Date: 2013-10-26
-Author: Yihui Xie and Yixuan Qiu
+Authors@R: c(person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut",
+    "cre")), person("Yixuan", "Qiu", role = "aut"), person("Christopher",
+    "Gandrud", role = "ctb"))
 Maintainer: Yihui Xie <xie@yihui.name>
 Description: This package provides syntax highlighting for R source code.
     Currently it supports LaTeX and HTML output. Source code of other languages
