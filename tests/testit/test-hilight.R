@@ -45,6 +45,11 @@ assert(
   identical(hi_latex('# only comments'), '\\hlcom{# only comments}')
 )
 
+if (getRversion() >= '3.0.2') assert(
+  'the right arrow -> is preserved',
+  identical(hi_latex('1 ->x # foo'), '\\hlnum{1} \\hlkwb{->}\\hlstd{x} \\hlcom{# foo}')
+)
+
 # define one's own markup data frame
 my_cmd = cmd_html
 my_cmd['NUM_CONST', 1] = '<span class="my num">'
