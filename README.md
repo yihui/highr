@@ -1,6 +1,6 @@
 # highr
 
-[![Build Status](https://travis-ci.org/yihui/highr.png)](https://travis-ci.org/yihui/highr)
+[![Build Status](https://travis-ci.org/yihui/highr.svg)](https://travis-ci.org/yihui/highr)
 
 This is an infrastructure R package for syntax highlighting. It supports
 LaTeX and HTML output. Not surprisingly, it works best with R code. It
