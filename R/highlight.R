@@ -3,7 +3,8 @@
 
 .operators = c(
   sprintf("'%s'", c('+', '-', '*', '/', '^', '$', '@', ':', '?', '~', '!')),
-  'SPECIAL', 'GT', 'GE', 'LT', 'LE', 'EQ', 'NE', 'AND', 'AND2', 'OR', 'OR2'
+  'SPECIAL', 'GT', 'GE', 'LT', 'LE', 'EQ', 'NE', 'AND', 'AND2', 'OR', 'OR2',
+  'NS_GET', 'NS_GET_INT'
 )
 
 .cmd.list = sort(c(
