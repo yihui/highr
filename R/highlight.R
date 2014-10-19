@@ -1,5 +1,5 @@
 # some special symbols (keywords a)
-.keywords = c('FUNCTION', 'IF', 'ELSE', 'WHILE', 'FOR', 'IN', 'BREAK', 'REPEAT', 'NEXT', 'NULL_CONST')
+.keywords = c('FUNCTION', 'IF', 'ELSE', 'WHILE', 'FOR', 'IN', 'BREAK', 'REPEAT', 'NEXT')
 
 .operators = c(
   sprintf("'%s'", c('+', '-', '*', '/', '^', '$', '@', ':', '?', '~', '!')),
@@ -8,6 +8,7 @@
 
 .cmd.list = sort(c(
   NUM_CONST            = 'num', # numbers
+  NULL_CONST           = 'num',
   SYMBOL_FUNCTION_CALL = 'kwd', # function calls
   STR_CONST            = 'str', # character strings
   COMMENT              = 'com', # comment
