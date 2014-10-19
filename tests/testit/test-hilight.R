@@ -23,7 +23,7 @@ assert(
   'hi_latex() preserves blank lines',
   identical(hi_latex(c('1+1','','foo(x=3) # comm')), c(
     '\\hlnum{1}\\hlopt{+}\\hlnum{1}\n',
-    '\\hlkwd{foo}\\hlstd{(}\\hlkwc{x}\\hlstd{=}\\hlnum{3}\\hlstd{)} \\hlcom{# comm}'
+    '\\hlkwd{foo}\\hlstd{(}\\hlkwc{x}\\hlkwb{=}\\hlnum{3}\\hlstd{)} \\hlcom{# comm}'
   ))
 )
 
