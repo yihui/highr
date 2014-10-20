@@ -19,8 +19,6 @@
   LEFT_ASSIGN          = 'kwb', # assignment
   EQ_ASSIGN            = 'kwb',
   RIGHT_ASSIGN         = 'kwb',
-  EQ_FORMALS           = 'kwb',
-  EQ_SUB               = 'kwb',
   setNames(rep('opt', length(.operators)), .operators),
   setNames(rep('kwa', length(.keywords)), .keywords),
   STANDARD             = 'std' # everything else
