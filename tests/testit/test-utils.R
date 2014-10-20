@@ -8,9 +8,9 @@ assert(
 assert(
   'escape_latex() sanitizes backslashes and {}',
   escape_latex('\\') == '\\textbackslash{}',
-  escape_latex('\\{}') == '\\textbackslash{}\\{\\}',
-  escape_latex('{\\}') == '\\{\\textbackslash{}\\}',
-  escape_latex('~!@#$%^&*()') == '~!@#$%^&*()'
+  escape_latex('\\{}') == '\\textbackslash{}\\{{}\\}{}',
+  escape_latex('{\\}') == '\\{{}\\textbackslash{}\\}{}',
+  escape_latex('~!@#$%^&*()') == '\\~{}!@\\#{}\\${}\\%{}\\^{}\\&{}*()'
 )
 
 assert(
