@@ -130,7 +130,7 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
   if (fallback) return(hi_naive(code, format, markup, escape_fun, c(p1, p2)))
   sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
                 SIMPLIFY = FALSE, USE.NAMES = FALSE),
-         function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))
+         function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\\\\'))
 }
 # highlight one expression
 hilight_one = function(code, format, markup, escape_fun) {
@@ -154,7 +154,7 @@ hilight_one = function(code, format, markup, escape_fun) {
   # record how many blank lines after each token
   blanks = c(pmax(res$line1[-1] - res$line2[-nrow(res)] - 1, 0), 0)
   # add line breaks to the 8th column
-  res = cbind(res, mapply(spaces, blanks, '\n'))
+  res = cbind(res, mapply(spaces, blanks, '\\\\'))
 
   # e.g. a string spans across multiple lines; now need to replace line1 with
   # line2 so that we know the starting and ending positions of spaces; e.g. turn

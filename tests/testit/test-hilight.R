@@ -16,14 +16,14 @@ assert(
   hi_latex('1+1', prompt=TRUE) == '\\hlstd{> }\\hlnum{1}\\hlopt{+}\\hlnum{1}',
   identical(hi_latex(c('  if (TRUE ){', 'foo && bar}'), prompt = TRUE), paste(
     '\\hlstd{> }\\enspace{}\\enspace{}\\hlkwa{if}\\enspace{}\\hlstd{(}\\hlnum{TRUE}\\enspace{}\\hlstd{)\\{{}}',
-    '\\hlstd{+ }\\hlstd{foo}\\enspace{}\\hlopt{\\&{}\\&{}}\\enspace{}\\hlstd{bar\\}{}}', sep = '\n'
+    '\\hlstd{+ }\\hlstd{foo}\\enspace{}\\hlopt{\\&{}\\&{}}\\enspace{}\\hlstd{bar\\}{}}', sep = '\\\\'
   ))
 )
 
 assert(
   'hi_latex() preserves blank lines',
   identical(hi_latex(c('1+1','','foo(x=3) # comm')), c(
-    '\\hlnum{1}\\hlopt{+}\\hlnum{1}\n',
+    '\\hlnum{1}\\hlopt{+}\\hlnum{1}\\\\',
     '\\hlkwd{foo}\\hlstd{(}\\hlkwc{x}\\hlstd{=}\\hlnum{3}\\hlstd{)}\\enspace{}\\hlcom{\\#{} comm}'
   ))
 )
