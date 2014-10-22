@@ -1,11 +1,12 @@
 Package: highr
 Type: Package
 Title: Syntax highlighting for R
-Version: 0.3.2
+Version: 0.3.3
 Date: 2013-10-26
-Authors@R: c(person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut",
-    "cre")), person("Yixuan", "Qiu", role = "aut"), person("Christopher",
-    "Gandrud", role = "ctb"))
+Authors@R: c(person("Christopher", "Gandrud", role = "ctb"),
+    person("Qiang", "Li", role = "ctb"),
+    person("Yixuan", "Qiu", role = "aut"),
+    person("Yihui", "Xie", email = "xie@yihui.name", role = c("aut", "cre")))
 Maintainer: Yihui Xie <xie@yihui.name>
 Description: This package provides syntax highlighting for R source code.
     Currently it supports LaTeX and HTML output. Source code of other languages

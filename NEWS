@@ -5,6 +5,12 @@ BUG FIXES
   o hi_andre() may fail to find highlight under OS X (thanks, Christopher
   Gandrud, #2)
 
+MINOR CHANGES
+
+  o :: and ::: are recognized as operators, and they will be syntax highlighted
+  in the same way as other operators like +, -, *, and /, etc (thanks, Qiang Li,
+  #3)
+
         CHANGES IN highr VERSION 0.3
 
 BUG FIXES
