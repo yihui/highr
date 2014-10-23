@@ -6,7 +6,7 @@ This is an infrastructure R package for syntax highlighting. It supports
 LaTeX and HTML output. Not surprisingly, it works best with R code. It
 attaches markups onto source code, e.g., it turns
 
-```s
+```r
 a <- 1 # something
 ```
 
@@ -24,7 +24,7 @@ or HTML code
 
 via
 
-```s
+```r
 library(highr)
 hi_latex("a <- 1 # something")
 hi_html("a <- 1 # something")
@@ -36,13 +36,13 @@ This package also has a wrapper function, `hi_andre()`, for Andre Simon's
 
 There are a few package Markdown vignettes in this package:
 
-```s
+```r
 browseVignettes(package = "highr")
 ```
 
 To install the development version here, use
 
-```s
+```r
 install.packages('highr', repos = 'http://rforge.net', type = 'source')
 ```
 
