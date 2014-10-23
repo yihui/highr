@@ -108,7 +108,7 @@ R3 = Rversion >= '3.0.0'
 hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback) {
   if (length(code) == 0) return(code)
   format = match.arg(format)
-  if (missing(markup))
+  if (missing(markup) || is.null(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
   escape_fun = if (format == 'latex') escape_latex else escape_html
   if (missing(fallback)) fallback = !R3
