@@ -33,9 +33,8 @@ try_parse = function(code, silent = TRUE) {
 
 # escape backslashes and {} for the alltt package
 escape_latex = function(x) {
-  x = gsub('\\\\', '\\\\textbackslash', x)
-  x = gsub('([{}])', '\\\\\\1', x)
-  gsub('\\\\textbackslash', '\\\\textbackslash{}', x)
+  x = gsub('([\\\\{}$_&#%^~])', '\\\\\\1{}', x)
+  gsub('\\\\', '\\textbackslash', x, fixed = TRUE)
 }
 
 # escape special HTML chars

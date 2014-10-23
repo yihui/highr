@@ -11,7 +11,7 @@ hi_naive_latex = function(x, str, com, kwa, kwd) {
   str = escape_bs(str); com = escape_bs(com); kwd = escape_bs(kwd)
   # comments: what if # inside quotes?
   if (any(idx <- grepl('#', x) & !grepl('"', x) & !i))
-    x[idx] = gsub('(#.*)', sprintf('%s\\1%s', com[1], com[2]), x[idx])
+    x[idx] = gsub('(\\\\#.*)', sprintf('%s\\1%s', com[1], com[2]), x[idx])
   i = which(!i)  # not comments
   # function names
   x[i] = gsub('([[:alnum:]_\\.]+)(\\s*)\\(', sprintf('%s\\1%s\\2(', kwd[1], kwd[2]), x[i])

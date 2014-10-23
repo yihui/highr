@@ -3,10 +3,11 @@ library(testit)
 assert(
   'hi_latex() works without prompts',
   hi_latex('1+1') == '\\hlnum{1}\\hlopt{+}\\hlnum{1}',
-  hi_latex('  1 +    1') == '  \\hlnum{1} \\hlopt{+}    \\hlnum{1}',
+  hi_latex('  1 +    1') ==
+    '\\enspace{}\\enspace{}\\hlnum{1}\\enspace{}\\hlopt{+}\\enspace{}\\enspace{}\\enspace{}\\enspace{}\\hlnum{1}',
   identical(hi_latex(c('  if (TRUE ){', 'foo && bar}')), c(
-    '  \\hlkwa{if} \\hlstd{(}\\hlnum{TRUE} \\hlstd{)\\{}',
-    '\\hlstd{foo} \\hlopt{&&} \\hlstd{bar\\}}'
+    '\\enspace{}\\enspace{}\\hlkwa{if}\\enspace{}\\hlstd{(}\\hlnum{TRUE}\\enspace{}\\hlstd{)\\{{}}',
+    '\\hlstd{foo}\\enspace{}\\hlopt{\\&{}\\&{}}\\enspace{}\\hlstd{bar\\}{}}'
   ))
 )
 
@@ -14,22 +15,22 @@ assert(
   'hi_latex() works with prompts',
   hi_latex('1+1', prompt=TRUE) == '\\hlstd{> }\\hlnum{1}\\hlopt{+}\\hlnum{1}',
   identical(hi_latex(c('  if (TRUE ){', 'foo && bar}'), prompt = TRUE), paste(
-    '\\hlstd{> }  \\hlkwa{if} \\hlstd{(}\\hlnum{TRUE} \\hlstd{)\\{}',
-    '\\hlstd{+ }\\hlstd{foo} \\hlopt{&&} \\hlstd{bar\\}}', sep = '\n'
+    '\\hlstd{> }\\enspace{}\\enspace{}\\hlkwa{if}\\enspace{}\\hlstd{(}\\hlnum{TRUE}\\enspace{}\\hlstd{)\\{{}}',
+    '\\hlstd{+ }\\hlstd{foo}\\enspace{}\\hlopt{\\&{}\\&{}}\\enspace{}\\hlstd{bar\\}{}}', sep = '\\\\'
   ))
 )
 
 assert(
   'hi_latex() preserves blank lines',
   identical(hi_latex(c('1+1','','foo(x=3) # comm')), c(
-    '\\hlnum{1}\\hlopt{+}\\hlnum{1}\n',
-    '\\hlkwd{foo}\\hlstd{(}\\hlkwc{x}\\hlstd{=}\\hlnum{3}\\hlstd{)} \\hlcom{# comm}'
+    '\\hlnum{1}\\hlopt{+}\\hlnum{1}\\\\',
+    '\\hlkwd{foo}\\hlstd{(}\\hlkwc{x}\\hlstd{=}\\hlnum{3}\\hlstd{)}\\enspace{}\\hlcom{\\#{} comm}'
   ))
 )
 
 assert(
   'the fallback method recognizes comments, functions and strings',
-  identical(hi_latex('1+1 # a comment', fallback = TRUE), '1+1 \\hlcom{# a comment}'),
+  identical(hi_latex('1+1 # a comment', fallback = TRUE), '1+1 \\hlcom{\\#{} a comment}'),
   identical(hi_latex('paste("STRING", \'string\')', fallback = TRUE),
             '\\hlkwd{paste}(\\hlstr{"STRING"}, \\hlstr{\'string\'})')
 )
@@ -37,17 +38,17 @@ assert(
 assert(
   'the fallback mode is used when the code does not parse',
   has_warning(res <- hi_latex('1+1+ # comment')),
-  identical(res, '1+1+ \\hlcom{# comment}')
+  identical(res, '1+1+ \\hlcom{\\#{} comment}')
 )
 
 assert(
   'hilight() works even if code only contains comments',
-  identical(hi_latex('# only comments'), '\\hlcom{# only comments}')
+  identical(hi_latex('# only comments'), '\\hlcom{\\#{} only comments}')
 )
 
 if (getRversion() >= '3.0.2') assert(
   'the right arrow -> is preserved',
-  identical(hi_latex('1 ->x # foo'), '\\hlnum{1} \\hlkwb{->}\\hlstd{x} \\hlcom{# foo}')
+  identical(hi_latex('1 ->x # foo'), '\\hlnum{1}\\enspace{}\\hlkwb{->}\\hlstd{x}\\enspace{}\\hlcom{\\#{} foo}')
 )
 
 # define one's own markup data frame
