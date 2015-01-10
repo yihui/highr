@@ -1,3 +1,4 @@
+% Please edit documentation in R/highlight.R
 \name{hilight}
 \alias{hi_html}
 \alias{hi_latex}

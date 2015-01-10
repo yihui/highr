@@ -1,3 +1,4 @@
+% Please edit documentation in R/highlight.R
 \name{hi_andre}
 \alias{hi_andre}
 \title{A wrapper to Andre Simon's Highlight}
