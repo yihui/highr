@@ -211,5 +211,5 @@ hi_andre = function(code, language, format = 'html') {
 
 # to help knitr engines decide the highlight language
 correct_lang = function(x) {
-  switch(x, Rcpp = 'cpp', tikz = 'latex', Rscript = 'R', x)
+  switch(x, Rcpp = 'cpp', tikz = 'latex', Rscript = 'R', fortran = 'f', stan = 'R', x)
 }
