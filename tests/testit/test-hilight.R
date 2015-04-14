@@ -45,7 +45,7 @@ assert(
   identical(hi_latex('# only comments'), '\\hlcom{# only comments}')
 )
 
-if (getRversion() >= '3.0.2') assert(
+assert(
   'the right arrow -> is preserved',
   identical(hi_latex('1 ->x # foo'), '\\hlnum{1} \\hlkwb{->}\\hlstd{x} \\hlcom{# foo}')
 )

@@ -11,6 +11,8 @@ Maintainer: Yihui Xie <xie@yihui.name>
 Description: Provides syntax highlighting for R source code. Currently it
     supports LaTeX and HTML output. Source code of other languages is supported
     via Andre Simon's highlight package (http://www.andre-simon.de).
+Depends:
+    R (>= 3.0.2)
 Suggests:
     knitr,
     testit

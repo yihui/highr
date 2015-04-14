@@ -47,10 +47,6 @@ merge_cmd = function(pdata, cmd) {
   res
 }
 
-# getParseData() came from R 3.0; for R < 3.0, use the fallback method
-Rversion = getRversion()
-R3 = Rversion >= '3.0.0'
-
 #' Syntax highlight an R code fragment
 #'
 #' This function \code{\link{parse}}s the R code, fetches the tokens in it
@@ -77,20 +73,15 @@ R3 = Rversion >= '3.0.0'
 #' @param markup a data frame of two columns containing the markup commands
 #' @param prompt whether to add prompts to the code
 #' @param fallback whether to use the fallback method, i.e. the regular
-#'   expression based method when the R version is smaller than 3.0.0 and
-#'   \code{getParseData()} is unavailable; this method is not precise and only
-#'   highlights a few types of symbols such as comments, strings and functions;
-#'   by default, \code{fallback = getRversion() < '3.0.0'}, and \code{fallback =
-#'   TRUE} when the input \code{code} fails to be \code{\link{parse}d}
+#'   expression based method; this method is not precise and only highlights a
+#'   few types of symbols such as comments, strings and functions;
+#'   \code{fallback} will be set to \code{TRUE} when the input \code{code} fails
+#'   to be \code{\link{parse}d}
 #' @param ... arguments to be passed to \code{hilight()}
 #' @author Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
 #'   <\url{http://yixuan.cos.name}>
-#' @seealso The \pkg{highlight} package is a more comphrehensive package, which
-#'   ships syntax highlighting themes as well. The \pkg{knitr} package uses
-#'   \pkg{highr} when it is available.
-#'
-#'   See the package vignettes \code{browseVignettes('highr')} for how this
-#'   function works internally.
+#' @seealso See the package vignettes \code{browseVignettes('highr')} for how
+#' this function works internally.
 #' @return A character vector for the syntax highlighted code.
 #' @examples library(highr)
 #' hilight("x=1 # assignment")
@@ -105,13 +96,12 @@ R3 = Rversion >= '3.0.0'
 #' # the markup data frames
 #' highr:::cmd_latex; highr:::cmd_html
 #' @export
-hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback) {
+hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = FALSE) {
   if (length(code) == 0) return(code)
   format = match.arg(format)
   if (missing(markup) || is.null(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
   escape_fun = if (format == 'latex') escape_latex else escape_html
-  if (missing(fallback)) fallback = !R3
   if (!fallback && !try_parse(code, silent = FALSE)) {
     # the code is not valid, so you must use the fallback mode
     warning('the syntax of the source code is invalid; the fallback mode is used')
@@ -126,7 +116,6 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
     p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
   }
   code = group_src(code)
-  if (fallback) return(hi_naive(code, format, markup, escape_fun, c(p1, p2)))
   sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
                 SIMPLIFY = FALSE, USE.NAMES = FALSE),
          function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))
@@ -138,9 +127,6 @@ hilight_one = function(code, format, markup, escape_fun) {
   op = options(stringsAsFactors = FALSE, keep.source = TRUE); on.exit(options(op))
 
   p = parse(text = code)
-  # R <= 3.0.1 has a bug when code is all comments; below is for compatibility
-  if (Rversion <= '3.0.1' && length(p) == 0L)
-    return(hi_naive(code, format, markup, escape_fun))
   z = utils::getParseData(p)
   if (NROW(z) == 0L || !any(z$terminal)) return(code)
   z = z[z$terminal, ]
@@ -200,7 +186,7 @@ hi_andre = function(code, language, format = 'html') {
   os = Sys.info()[['sysname']]
   # highlight on Linux Mint can be something else
   # on OS10 with highlight installed using Homebrew it's often in /usr/local/bin
-  if (!nzchar(h) || (h == '/usr/local/bin/highlight' && os != 'Darwin' && 
+  if (!nzchar(h) || (h == '/usr/local/bin/highlight' && os != 'Darwin' &&
                        !file.exists(h <- '/usr/bin/highlight')))
     stop('please first install highlight from http://www.andre-simon.de')
   f = basename(tempfile('code', '.'))
