@@ -5,7 +5,7 @@
 \alias{hilight}
 \title{Syntax highlight an R code fragment}
 \usage{
-hilight(code, format = c("latex", "html"), markup, prompt = FALSE, fallback)
+hilight(code, format = c("latex", "html"), markup, prompt = FALSE, fallback = FALSE)
 
 hi_latex(code, ...)
 
@@ -21,11 +21,10 @@ hi_html(code, ...)
 \item{prompt}{whether to add prompts to the code}
 
 \item{fallback}{whether to use the fallback method, i.e. the regular
-expression based method when the R version is smaller than 3.0.0 and
-\code{getParseData()} is unavailable; this method is not precise and only
-highlights a few types of symbols such as comments, strings and functions;
-by default, \code{fallback = getRversion() < '3.0.0'}, and \code{fallback =
-TRUE} when the input \code{code} fails to be \code{\link{parse}d}}
+expression based method; this method is not precise and only highlights a
+few types of symbols such as comments, strings and functions;
+\code{fallback} will be set to \code{TRUE} when the input \code{code} fails
+to be \code{\link{parse}d}}
 
 \item{...}{arguments to be passed to \code{hilight()}}
 }
@@ -73,10 +72,6 @@ Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
   <\url{http://yixuan.cos.name}>
 }
 \seealso{
-The \pkg{highlight} package is a more comphrehensive package, which
-  ships syntax highlighting themes as well. The \pkg{knitr} package uses
-  \pkg{highr} when it is available.
-
-  See the package vignettes \code{browseVignettes('highr')} for how this
-  function works internally.
+See the package vignettes \code{browseVignettes('highr')} for how
+this function works internally.
 }
