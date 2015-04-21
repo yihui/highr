@@ -1,8 +1,8 @@
 Package: highr
 Type: Package
 Title: Syntax Highlighting for R Source Code
-Version: 0.4.2
-Date: 2015-03-29
+Version: 0.5
+Date: 2015-04-21
 Authors@R: c(person("Christopher", "Gandrud", role = "ctb"),
     person("Qiang", "Li", role = "ctb"),
     person("Yixuan", "Qiu", role = "aut"),
