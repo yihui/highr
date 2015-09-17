@@ -29,6 +29,16 @@ try_parse = function(code, silent = TRUE) {
   !inherits(try(parse(text = code), silent = silent), 'try-error')
 }
 
+# adapted from evaluate
+srcfilecopy2 = function(lines, ...) {
+  src = srcfilecopy(lines = '', ...)
+  if (length(grep('\n', lines))) lines = unlist(strsplit(
+    sub('$', '\n', as.character(lines)), '\n'
+  ))
+  src$lines = lines
+  src
+}
+
 # borrowed from knitr
 
 # escape backslashes and {} for the alltt package
