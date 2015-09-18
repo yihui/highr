@@ -95,6 +95,7 @@ merge_cmd = function(pdata, cmd) {
 #'
 #' # the markup data frames
 #' highr:::cmd_latex; highr:::cmd_html
+#' @import utils
 #' @export
 hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = FALSE) {
   if (length(code) == 0) return(code)
