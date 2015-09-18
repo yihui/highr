@@ -126,7 +126,7 @@ hilight_one = function(code, format, markup, escape_fun) {
   # the data frames do not need factors in this function; need to keep source
   op = options(stringsAsFactors = FALSE, keep.source = TRUE); on.exit(options(op))
 
-  p = parse(text = code, srcfile = srcfilecopy2(code, '<text>'))
+  p = parse_source(code)
   z = utils::getParseData(p)
   if (NROW(z) == 0L || !any(z$terminal)) return(code)
   z = z[z$terminal, ]

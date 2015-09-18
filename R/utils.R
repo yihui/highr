@@ -29,14 +29,14 @@ try_parse = function(code, silent = TRUE) {
   !inherits(try(parse(text = code), silent = silent), 'try-error')
 }
 
-# adapted from evaluate
-srcfilecopy2 = function(lines, ...) {
-  src = srcfilecopy(lines = '', ...)
+parse_source = function(lines) {
+  # adapted from evaluate
+  src = srcfilecopy('<text>', lines = '')
   if (length(grep('\n', lines))) lines = unlist(strsplit(
     sub('$', '\n', as.character(lines)), '\n'
   ))
   src$lines = lines
-  src
+  parse(text = lines, srcfile = src)
 }
 
 # borrowed from knitr
