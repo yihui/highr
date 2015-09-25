@@ -1,3 +1,10 @@
+        CHANGES IN highr VERSION 0.6
+
+NEW FEATURES
+
+	o `hilight()` can deal with multibyte characters that cannot represented in
+	the system native encoding now (on Windows)
+
         CHANGES IN highr VERSION 0.5
 
 MAJOR CHANGES
