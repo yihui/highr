@@ -20,3 +20,4 @@ License: GPL
 URL: https://github.com/yihui/highr
 BugReports: https://github.com/yihui/highr/issues
 VignetteBuilder: knitr
+RoxygenNote: 5.0.1
