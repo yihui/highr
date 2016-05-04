@@ -50,6 +50,12 @@ assert(
   identical(hi_latex('1 ->x # foo'), '\\hlnum{1} \\hlkwb{->}\\hlstd{x} \\hlcom{# foo}')
 )
 
+assert(
+  'blank lines before/after code are preserved',
+  hi_latex(c('', '', '1')) %==% c('\n', '\\hlnum{1}'),
+  hi_latex(c('', '', '1', '')) %==% c('\n', '\\hlnum{1}', '')
+)
+
 # define one's own markup data frame
 my_cmd = cmd_html
 my_cmd['NUM_CONST', 1] = '<span class="my num">'

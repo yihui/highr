@@ -5,6 +5,11 @@ NEW FEATURES
 	o `hilight()` can deal with multibyte characters that cannot represented in
 	the system native encoding now (on Windows)
 
+BUG FIXES
+
+	o blank lines before/after code are preserved in the hilight() output now
+	(thanks, Terry Therneau)
+
         CHANGES IN highr VERSION 0.5
 
 MAJOR CHANGES

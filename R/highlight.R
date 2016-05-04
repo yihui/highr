@@ -132,6 +132,12 @@ hilight_one = function(code, format, markup, escape_fun) {
   if (NROW(z) == 0L || !any(z$terminal)) return(code)
   z = z[z$terminal, ]
 
+  # record how empty lines before/after the code
+  one = paste(code, collapse = '\n')
+  r1 = '^(\\s*)\n.*'; r2 = '^.*?\n(\\s*)$'
+  s1 = if (grepl(r1, one)) gsub(r1, '\\1', one)
+  s2 = if (grepl(r2, one)) gsub(r2, '\\1', one)
+
   res = cbind(z[, c('line1', 'col1', 'line2', 'col2', 'text')], merge_cmd(z, markup))
 
   # escape special LaTeX/HTML chars
@@ -149,7 +155,7 @@ hilight_one = function(code, format, markup, escape_fun) {
     res$line1[res$line1 == res$line1[i]] = res$line2[i]
   }
 
-  unlist(lapply(split(res, res$line1), function(d) {
+  out = lapply(split(res, res$line1), function(d) {
     # merge adjacent tokens of the same type so that the output is cleaner
     empty = matrix(FALSE, nrow = nrow(d), ncol = 2)
     for (i in seq_len(nrow(d) - 1)) {
@@ -161,7 +167,8 @@ hilight_one = function(code, format, markup, escape_fun) {
     col = matrix(head(c(0, t(col)), -1), ncol = 2, byrow = TRUE)
     paste(mapply(spaces, col[, 2] - col[, 1] - 1), d[, 6], d[, 'text'], d[, 7],
           d[, 8], sep = '', collapse = '')
-  }), use.names = FALSE)
+  })
+  c(s1, unlist(out, use.names = FALSE), s2)
 }
 #' @export
 #' @rdname hilight
