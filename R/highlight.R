@@ -30,6 +30,26 @@ cmd_latex = data.frame(
   row.names = names(.cmd.list)
 )
 
+cmd_latex = data.frame(
+  cmd1 = paste('\\hl', .cmd.list, '{', sep = ''),
+  cmd2 = '}',
+  stringsAsFactors = FALSE,
+  row.names = names(.cmd.list)
+)
+
+.cmd.pandoc = c(
+  num = 'DecValTok', kwd = 'KeywordTok', str = 'StringTok', com = 'CommentTok',
+  kwc = 'DataTypeTok', kwb = 'NormalTok', opt = 'NormalTok', kwa = 'NormalTok',
+  std = 'NormalTok'
+)
+
+cmd_pandoc_latex = data.frame(
+  cmd1 = paste('\\', .cmd.pandoc[.cmd.list], '{', sep = ''),
+  cmd2 = '}',
+  stringsAsFactors = FALSE,
+  row.names = names(.cmd.list)
+)
+
 cmd_html = data.frame(
   cmd1 = paste('<span class="hl ', .cmd.list, '">', sep = ''),
   cmd2 = '</span>',
