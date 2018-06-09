@@ -5,7 +5,6 @@ cache: packages
 env:
   global:
     - R_PKG="$(basename $TRAVIS_REPO_SLUG)"
-    - secure: TyKZf2Gn7ucSHNWYgjWtMEHPjlvNKw6/ST4n28zV2kAYnDX1pJdGfbM0DzhMAB1taFBhAr16qQefApnNFJQLu4e65ovXXglFxd7Do/bofnmaSBln0edG05Hg0/yn7mmNY0NwbKVC4qX2OJZiwqvcjhBTh54J4W3ATUycNhPQDOs=
 
 repos:
   XRAN: https://xran.yihui.name
