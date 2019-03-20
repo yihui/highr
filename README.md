@@ -1,6 +1,7 @@
 # highr
 
 [![Build Status](https://travis-ci.org/yihui/highr.svg)](https://travis-ci.org/yihui/highr)
+[![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/highr)](https://cran.r-project.org/package=highr)
 
 This is an infrastructure R package for syntax highlighting. It supports
 LaTeX and HTML output. Not surprisingly, it works best with R code. It
