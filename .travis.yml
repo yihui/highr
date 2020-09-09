@@ -5,9 +5,6 @@ env:
   global:
     - R_PKG="$(basename $TRAVIS_REPO_SLUG)"
 
-repos:
-  XRAN: https://xran.yihui.name
-
 before_install:
   - "curl https://xran.yihui.org/.gitconfig -o ~/.gitconfig"
 

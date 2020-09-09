@@ -123,7 +123,7 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
   if (missing(markup) || is.null(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
   escape_fun = if (format == 'latex') escape_latex else escape_html
-  if (!fallback && !try_parse(code, silent = FALSE)) {
+  if (!fallback && !xfun::valid_syntax(code, silent = FALSE)) {
     # the code is not valid, so you must use the fallback mode
     warning('the syntax of the source code is invalid; the fallback mode is used')
     fallback = TRUE
@@ -136,7 +136,7 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
   if (!any(is.na(std))) {
     p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
   }
-  code = group_src(code)
+  code = xfun::split_source(code)
   sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
                 SIMPLIFY = FALSE, USE.NAMES = FALSE),
          function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))
