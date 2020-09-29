@@ -12,7 +12,7 @@ Description: Provides syntax highlighting for R source code. Currently it
     via Andre Simon's highlight package (<http://www.andre-simon.de>).
 Depends:
     R (>= 3.2.3),
-    xfun (>= 0.17)
+    xfun (>= 0.18)
 Suggests:
     knitr,
     testit
@@ -21,4 +21,3 @@ URL: https://github.com/yihui/highr
 BugReports: https://github.com/yihui/highr/issues
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-Remotes: yihui/xfun
