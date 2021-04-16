@@ -47,8 +47,8 @@ browseVignettes(package = "highr")
 To install the development version here, use
 
 ```r
-install.packages('highr', repos = 'http://rforge.net', type = 'source')
+install.packages('highr', repos = 'https://yihui.r-universe.dev')
 ```
 
-This package is licensed under GPL, and is supposed to serve other packages
-such as [**knitr**](http://yihui.name/knitr).
+This package is licensed under GPL, and was originally designed for serving other packages
+such as [**knitr**](http://yihui.org/knitr/).
