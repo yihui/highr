@@ -98,8 +98,7 @@ merge_cmd = function(pdata, cmd) {
 #'   \code{fallback} will be set to \code{TRUE} when the input \code{code} fails
 #'   to be \code{\link{parse}d}
 #' @param ... arguments to be passed to \code{hilight()}
-#' @author Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
-#'   <\url{http://yixuan.cos.name}>
+#' @author Yihui Xie and Yixuan Qiu
 #' @seealso See the package vignettes \code{browseVignettes('highr')} for how
 #' this function works internally.
 #' @return A character vector for the syntax highlighted code.

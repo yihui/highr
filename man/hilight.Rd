@@ -80,6 +80,5 @@ See the package vignettes \code{browseVignettes('highr')} for how
 this function works internally.
 }
 \author{
-Yihui Xie <\url{http://yihui.name}> and Yixuan Qiu
-  <\url{http://yixuan.cos.name}>
+Yihui Xie and Yixuan Qiu
 }
