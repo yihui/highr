@@ -15,6 +15,7 @@ Depends:
     xfun (>= 0.18)
 Suggests:
     knitr,
+    markdown,
     testit
 License: GPL
 URL: https://github.com/yihui/highr
