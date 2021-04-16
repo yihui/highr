@@ -1,3 +1,6 @@
+# CHANGES IN highr VERSION 0.10
+
+
 # CHANGES IN highr VERSION 0.9
 
 - Added `markdown` to `Suggests` of the package `DESCRIPTION` for https://github.com/yihui/knitr/issues/1864.
