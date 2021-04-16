@@ -23,7 +23,7 @@ This function calls Highlight to syntax highlight a code fragment.
 \examples{
 \dontrun{
 hi_andre("1+1", language = "R")
-hi_andre("void main() {\\nreturn(0)\\n}", language = "c", format = "latex")
+hi_andre("void main() {\nreturn(0)\n}", language = "c", format = "latex")
 }
 }
 \references{
