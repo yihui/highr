@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/yihui/highr/workflows/R-CMD-check/badge.svg)](https://github.com/yihui/highr/actions)
-[![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/highr)](https://cran.r-project.org/package=highr)
+[![CRAN release](https://www.r-pkg.org/badges/version/highr)](https://cran.r-project.org/package=highr)
 <!-- badges: end -->
 
 
