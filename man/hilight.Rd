@@ -64,9 +64,9 @@ font styles are properly defined in the LaTeX preamble and HTML header.
 library(highr)
 hilight("x=1 # assignment")
 
-txt = c("a <- 1 # something", "c(y=\"world\", z=\"hello\")", "b=function(x=5) {", 
+txt = c("a <- 1 # something", "c(y=\"world\", z=\"hello\")", "b=function(x=5) {",
     "for(i in 1:10) {
-  if (i < x) print(i) else break}}", "z@child # S4 slot", 
+  if (i < x) print(i) else break}}", "z@child # S4 slot",
     "'special chars <>#$\%&_{}'")
 cat(hi_latex(txt), sep = "\n")
 cat(hi_html(txt), sep = "\n")
