@@ -60,7 +60,7 @@ and we can easily figure out how many white spaces are needed for each row:
 
 ```{r}
 (s = z[, 2] - z[, 1] - 1)
-(s = mapply(highr:::spaces, s))
+(s = strrep(' ', s))
 paste(s, d$text, sep = '')
 ```
 

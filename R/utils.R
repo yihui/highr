@@ -1,10 +1,3 @@
-# generate spaces of width n
-spaces = function(n = 1, char = ' ') {
-  if (n <= 0) return('')
-  if (n == 1) return(char)
-  paste(rep(char, n), collapse = '')
-}
-
 # parse source and keep source
 parse_source = function(lines) parse(text = lines, keep.source = TRUE)
 

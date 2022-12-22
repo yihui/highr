@@ -165,7 +165,7 @@ hilight_one = function(code, format, markup, escape_fun) {
   # record how many blank lines after each token
   blanks = c(pmax(res$line1[-1] - res$line2[-nrow(res)] - 1, 0), 0)
   # add line breaks to the 8th column
-  res = cbind(res, mapply(spaces, blanks, '\n'))
+  res = cbind(res, strrep('\n', blanks))
 
   # e.g. a string spans across multiple lines; now need to replace line1 with
   # line2 so that we know the starting and ending positions of spaces; e.g. turn
@@ -184,7 +184,7 @@ hilight_one = function(code, format, markup, escape_fun) {
     col = as.matrix(d[, c('col1', 'col2')])
     # add 0 and remove col[n, 2] to get start/end positions of spaces
     col = matrix(head(c(0, t(col)), -1), ncol = 2, byrow = TRUE)
-    paste(mapply(spaces, col[, 2] - col[, 1] - 1), d[, 6], d[, 'text'], d[, 7],
+    paste(strrep(' ', col[, 2] - col[, 1] - 1), d[, 6], d[, 'text'], d[, 7],
           d[, 8], sep = '', collapse = '')
   })
   c(s1, unlist(out, use.names = FALSE), s2)
