@@ -1,3 +1,6 @@
+# TODO: remove this function after knitr 1.42
+spaces = function(n = 1, char = ' ') strrep(char, n)
+
 # parse source and keep source
 parse_source = function(lines) parse(text = lines, keep.source = TRUE)
 
