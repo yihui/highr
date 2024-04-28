@@ -10,7 +10,7 @@
 .cmd.list = sort(c(
   NUM_CONST            = 'num', # numbers
   SYMBOL_FUNCTION_CALL = 'kwd', # function calls
-  STR_CONST            = 'str', # character strings
+  STR_CONST            = 'sng', # character strings
   COMMENT              = 'com', # comment
   SYMBOL_FORMALS       = 'kwc', # function(formals)
   SYMBOL_SUB           = 'kwc', # FUN(args)
@@ -20,7 +20,7 @@
   RIGHT_ASSIGN         = 'kwb',
   setNames(rep('opt', length(.operators)), .operators),
   setNames(rep('kwa', length(.keywords)), .keywords),
-  STANDARD             = 'std' # everything else
+  DEFAULT              = 'def' # everything else
 ))
 
 cmd_latex = data.frame(
@@ -38,9 +38,9 @@ cmd_latex = data.frame(
 )
 
 .cmd.pandoc = c(
-  num = 'DecValTok', kwd = 'KeywordTok', str = 'StringTok', com = 'CommentTok',
+  num = 'DecValTok', kwd = 'KeywordTok', sng = 'StringTok', com = 'CommentTok',
   kwc = 'DataTypeTok', kwb = 'NormalTok', opt = 'NormalTok', kwa = 'NormalTok',
-  std = 'NormalTok'
+  def = 'NormalTok'
 )
 
 cmd_pandoc_latex = data.frame(
@@ -61,9 +61,9 @@ cmd_html = data.frame(
 merge_cmd = function(pdata, cmd) {
   res = cmd[pdata$token, ]
   idx = is.na(res[, 1])
-  res[idx, 1] = cmd['STANDARD', 1]
-  res[idx, 2] = cmd['STANDARD', 2]
-  res[is.na(res)] = '' # if STANDARD is undefined in the markup data frame
+  res[idx, 1] = cmd['DEFAULT', 1]
+  res[idx, 2] = cmd['DEFAULT', 2]
+  res[is.na(res)] = '' # if DEFAULT is undefined in the markup data frame
   res
 }
 
