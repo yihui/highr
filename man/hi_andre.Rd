@@ -27,5 +27,6 @@ hi_andre("void main() {\nreturn(0)\n}", language = "c", format = "latex")
 }
 }
 \references{
-Andre Simon's Highlight package \url{http://www.andre-simon.de}.
+Andre Simon's Highlight package
+  \url{https://gitlab.com/saalen/highlight}.
 }

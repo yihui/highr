@@ -203,7 +203,8 @@ hi_html = function(code, ...) hilight(code, 'html', ...)
 #' @param language the input language (c, cpp, python, r, ...); see
 #'   \code{system('highlight -p')}
 #' @param format the output format (html, latex, ...)
-#' @references Andre Simon's Highlight package \url{http://www.andre-simon.de}.
+#' @references Andre Simon's Highlight package
+#'   \url{https://gitlab.com/saalen/highlight}.
 #' @return A character string for the syntax highlighted code.
 #' @export
 #' @examples \dontrun{hi_andre('1+1', language='R')
@@ -215,7 +216,7 @@ hi_andre = function(code, language, format = 'html') {
   # on OS10 with highlight installed using Homebrew it's often in /usr/local/bin
   if (!nzchar(h) || (h == '/usr/local/bin/highlight' && os != 'Darwin' &&
                        !file.exists(h <- '/usr/bin/highlight')))
-    stop('please first install highlight from http://www.andre-simon.de')
+    stop('please first install highlight from https://gitlab.com/saalen/highlight')
   f = basename(tempfile('code', '.'))
   writeLines(code, f); on.exit(unlink(f))
   cmd = sprintf('%s -f -S %s -O %s %s', shQuote(h), correct_lang(language), format, f)

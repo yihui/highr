@@ -1,7 +1,7 @@
 Package: highr
 Type: Package
 Title: Syntax Highlighting for R Source Code
-Version: 0.10.1
+Version: 0.10.2
 Authors@R: c(
     person("Yihui", "Xie", role = c("aut", "cre"), email = "xie@yihui.name", comment = c(ORCID = "0000-0003-0645-5666")),
     person("Yixuan", "Qiu", role = "aut"),
@@ -10,7 +10,7 @@ Authors@R: c(
     )
 Description: Provides syntax highlighting for R source code. Currently it
     supports LaTeX and HTML output. Source code of other languages is supported
-    via Andre Simon's highlight package (<http://www.andre-simon.de>).
+    via Andre Simon's highlight package (<https://gitlab.com/saalen/highlight>).
 Depends:
     R (>= 3.3.0)
 Imports:

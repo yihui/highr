@@ -36,7 +36,7 @@ hi_html("a <- 1 # something")
 ```
 
 This package also has a wrapper function, `hi_andre()`, for Andre Simon's
-[Highlight](http://www.andre-simon.de) package.
+[Highlight](https://gitlab.com/saalen/highlight) package.
 
 There are a few package Markdown vignettes in this package:
 
