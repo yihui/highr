@@ -17,7 +17,7 @@ a <- 1 # something
 into LaTeX code
 
 ```latex
-\hlstd{a} \hlkwb{<-} \hlnum{1} \hlcom{\# something}
+\hldef{a} \hlkwb{<-} \hlnum{1} \hlcom{\# something}
 ```
 
 or HTML code

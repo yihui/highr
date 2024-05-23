@@ -1,5 +1,7 @@
 # CHANGES IN highr VERSION 0.11
 
+- Changed `\hlstr` to `\hlsng` and `\hlstd` to `\hldef` (thanks, @dcser123, #11).
+
 # CHANGES IN highr VERSION 0.10
 
 - The minimal R version required is 3.3.0 now.

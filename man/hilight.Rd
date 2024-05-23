@@ -49,7 +49,7 @@ The two functions \code{hi_latex} and \code{hi_html} are wrappers of
 \details{
 For the \code{markup} data frame, the first column is put before the R
 tokens, and the second column is behind; the row names of the data frame must
-be the R token names; a special row is named \code{STANDARD}, which contains
+be the R token names; a special row is named \code{DEFAULT}, which contains
 the markup for the standard tokens (i.e. those that do not need to be
 highlighted); if missing, the built-in data frames \code{highr:::cmd_latex}
 and \code{highr:::cmd_html} will be used.
