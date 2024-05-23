@@ -24,4 +24,4 @@ URL: https://github.com/yihui/highr
 BugReports: https://github.com/yihui/highr/issues
 VignetteBuilder: knitr
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

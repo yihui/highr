@@ -78,7 +78,7 @@ merge_cmd = function(pdata, cmd) {
 #'
 #' For the \code{markup} data frame, the first column is put before the R
 #' tokens, and the second column is behind; the row names of the data frame must
-#' be the R token names; a special row is named \code{STANDARD}, which contains
+#' be the R token names; a special row is named \code{DEFAULT}, which contains
 #' the markup for the standard tokens (i.e. those that do not need to be
 #' highlighted); if missing, the built-in data frames \code{highr:::cmd_latex}
 #' and \code{highr:::cmd_html} will be used.
@@ -131,7 +131,7 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
     (if (fallback) hi_naive else hilight_one)(code, format, markup, escape_fun)
   )
   p1 = escape_fun(getOption('prompt')); p2 = escape_fun(getOption('continue'))
-  std = unlist(markup['STANDARD', ])
+  std = unlist(markup['DEFAULT', ])
   if (!any(is.na(std))) {
     p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
   }
