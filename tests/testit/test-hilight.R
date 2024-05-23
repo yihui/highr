@@ -5,17 +5,17 @@ assert(
   hi_latex('1+1') == '\\hlnum{1}\\hlopt{+}\\hlnum{1}',
   hi_latex('  1 +    1') == '  \\hlnum{1} \\hlopt{+}    \\hlnum{1}',
   identical(hi_latex(c('  if (TRUE ){', 'foo && bar}')), c(
-    '  \\hlkwa{if} \\hlstd{(}\\hlnum{TRUE} \\hlstd{)\\{}',
-    '\\hlstd{foo} \\hlopt{&&} \\hlstd{bar\\}}'
+    '  \\hlkwa{if} \\hldef{(}\\hlnum{TRUE} \\hldef{)\\{}',
+    '\\hldef{foo} \\hlopt{&&} \\hldef{bar\\}}'
   ))
 )
 
 assert(
   'hi_latex() works with prompts',
-  hi_latex('1+1', prompt=TRUE) == '\\hlstd{> }\\hlnum{1}\\hlopt{+}\\hlnum{1}',
+  hi_latex('1+1', prompt=TRUE) == '\\hldef{> }\\hlnum{1}\\hlopt{+}\\hlnum{1}',
   identical(hi_latex(c('  if (TRUE ){', 'foo && bar}'), prompt = TRUE), paste(
-    '\\hlstd{> }  \\hlkwa{if} \\hlstd{(}\\hlnum{TRUE} \\hlstd{)\\{}',
-    '\\hlstd{+ }\\hlstd{foo} \\hlopt{&&} \\hlstd{bar\\}}', sep = '\n'
+    '\\hldef{> }  \\hlkwa{if} \\hldef{(}\\hlnum{TRUE} \\hldef{)\\{}',
+    '\\hldef{+ }\\hldef{foo} \\hlopt{&&} \\hldef{bar\\}}', sep = '\n'
   ))
 )
 
@@ -23,7 +23,7 @@ assert(
   'hi_latex() preserves blank lines',
   identical(hi_latex(c('1+1','','foo(x=3) # comm')), c(
     '\\hlnum{1}\\hlopt{+}\\hlnum{1}\n',
-    '\\hlkwd{foo}\\hlstd{(}\\hlkwc{x}\\hlstd{=}\\hlnum{3}\\hlstd{)} \\hlcom{# comm}'
+    '\\hlkwd{foo}\\hldef{(}\\hlkwc{x}\\hldef{=}\\hlnum{3}\\hldef{)} \\hlcom{# comm}'
   ))
 )
 
@@ -31,7 +31,7 @@ assert(
   'the fallback method recognizes comments, functions and strings',
   identical(hi_latex('1+1 # a comment', fallback = TRUE), '1+1 \\hlcom{# a comment}'),
   identical(hi_latex('paste("STRING", \'string\')', fallback = TRUE),
-            '\\hlkwd{paste}(\\hlstr{"STRING"}, \\hlstr{\'string\'})')
+            '\\hlkwd{paste}(\\hlsng{"STRING"}, \\hlsng{\'string\'})')
 )
 
 assert(
@@ -47,7 +47,7 @@ assert(
 
 assert(
   'the right arrow -> is preserved',
-  identical(hi_latex('1 ->x # foo'), '\\hlnum{1} \\hlkwb{->}\\hlstd{x} \\hlcom{# foo}')
+  identical(hi_latex('1 ->x # foo'), '\\hlnum{1} \\hlkwb{->}\\hldef{x} \\hlcom{# foo}')
 )
 
 assert(
