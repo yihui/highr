@@ -4,7 +4,7 @@ assert('hi_latex() works without prompts', {
   (hi_latex('1+1') %==% '\\hlnum{1}\\hlopt{+}\\hlnum{1}')
   (hi_latex('  1 +    1') %==% '  \\hlnum{1} \\hlopt{+}    \\hlnum{1}')
   (hi_latex(c('  if (TRUE ){', 'foo && bar}')) %==% c(
-    '  \\hlkwa{if} \\hldef{(}\\hlnum{TRUE} \\hldef{)\\{}'%==%
+    '  \\hlkwa{if} \\hldef{(}\\hlnum{TRUE} \\hldef{)\\{}',
     '\\hldef{foo} \\hlopt{&&} \\hldef{bar\\}}'
   ))
 })
