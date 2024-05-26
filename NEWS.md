@@ -1,3 +1,6 @@
+# CHANGES IN highr VERSION 0.12
+
+
 # CHANGES IN highr VERSION 0.11
 
 - Changed `\hlstr` to `\hlsng` and `\hlstd` to `\hldef` (thanks, @dcser123, #11).
