@@ -23,7 +23,7 @@ into LaTeX code
 or HTML code
 
 ```html
-<span class="hl std">a</span> <span class="hl kwb">&lt;-</span> <span class="hl num">1</span> <span class="hl com"># something</span>
+<span class="hl def">a</span> <span class="hl kwb">&lt;-</span> <span class="hl num">1</span> <span class="hl com"># something</span>
 ```
 
 via
