@@ -7,10 +7,10 @@ escape_latex('{\\}')
 escape_latex('~!@#$%^&*()')
 ```
 ```
-[1] "\\textbackslash{}"
-[1] "\\textbackslash{}\\{\\}"
-[1] "\\{\\textbackslash{}\\}"
-[1] "~!@#$%^&*()"
+\textbackslash{}
+\textbackslash{}\{\}
+\{\textbackslash{}\}
+~!@#$%^&*()
 ```
 
 # escape_html() escapes HTML chars
@@ -20,6 +20,6 @@ escape_html('&"<>')
 escape_html('~!@#$%^&*()')
 ```
 ```
-[1] "&amp;&quot;&lt;&gt;"
-[1] "~!@#$%^&amp;*()"
+&amp;&quot;&lt;&gt;
+~!@#$%^&amp;*()
 ```

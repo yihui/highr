@@ -19,8 +19,9 @@ hi_latex('1+1', prompt = TRUE)
 hi_latex(c('  if (TRUE ){', 'foo && bar}'), prompt = TRUE)
 ```
 ```
-[1] "\\hldef{> }\\hlnum{1}\\hlopt{+}\\hlnum{1}"
-[1] "\\hldef{> }  \\hlkwa{if} \\hldef{(}\\hlnum{TRUE} \\hldef{)\\{}\n\\hldef{+ }\\hldef{foo} \\hlopt{&&} \\hldef{bar\\}}"
+\hldef{> }\hlnum{1}\hlopt{+}\hlnum{1}
+\hldef{> }  \hlkwa{if} \hldef{(}\hlnum{TRUE} \hldef{)\{}
+\hldef{+ }\hldef{foo} \hlopt{&&} \hldef{bar\}}
 ```
 
 # hi_latex() preserves blank lines
@@ -40,8 +41,8 @@ hi_latex('1+1 # a comment', fallback = TRUE)
 hi_latex('paste("STRING", \'string\')', fallback = TRUE)
 ```
 ```
-[1] "1+1 \\hlcom{# a comment}"
-[1] "\\hlkwd{paste}(\\hlsng{\"STRING\"}, \\hlsng{'string'})"
+1+1 \hlcom{# a comment}
+\hlkwd{paste}(\hlsng{"STRING"}, \hlsng{'string'})
 ```
 
 # the fallback mode is used when the code does not parse
@@ -52,7 +53,7 @@ res
 ```
 ```
 [1] TRUE
-[1] "1+1+ \\hlcom{# comment}"
+1+1+ \hlcom{# comment}
 ```
 
 # hilight() works even if code only contains comments
