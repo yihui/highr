@@ -118,7 +118,7 @@ merge_cmd = function(pdata, cmd) {
 #' @importFrom xfun valid_syntax split_source raw_string
 #' @export
 hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = FALSE) {
-  if (length(code) == 0) return(code)
+  if (length(code) == 0) return(raw_string(code))
   format = match.arg(format)
   if (missing(markup) || is.null(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
@@ -128,9 +128,9 @@ hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fa
     warning('the syntax of the source code is invalid; the fallback mode is used')
     fallback = TRUE
   }
-  if (!prompt) return(
+  if (!prompt) return(raw_string(
     (if (fallback) hi_naive else hilight_one)(code, format, markup, escape_fun)
-  )
+  ))
   p1 = escape_fun(getOption('prompt')); p2 = escape_fun(getOption('continue'))
   std = unlist(markup['DEFAULT', ])
   if (!any(is.na(std))) {
