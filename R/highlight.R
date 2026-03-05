@@ -115,30 +115,32 @@ merge_cmd = function(pdata, cmd) {
 #' # the markup data frames
 #' highr:::cmd_latex; highr:::cmd_html
 #' @import utils
+#' @importFrom xfun valid_syntax split_source raw_string
 #' @export
 hilight = function(code, format = c('latex', 'html'), markup, prompt = FALSE, fallback = FALSE) {
-  if (length(code) == 0) return(code)
+  if (length(code) == 0) return(raw_string(code))
   format = match.arg(format)
   if (missing(markup) || is.null(markup))
     markup = if (format == 'latex') cmd_latex else cmd_html
   escape_fun = if (format == 'latex') escape_latex else escape_html
-  if (!fallback && !xfun::valid_syntax(code, silent = FALSE)) {
+  if (!fallback && !valid_syntax(code, silent = FALSE)) {
     # the code is not valid, so you must use the fallback mode
     warning('the syntax of the source code is invalid; the fallback mode is used')
     fallback = TRUE
   }
-  if (!prompt) return(
+  if (!prompt) return(raw_string(
     (if (fallback) hi_naive else hilight_one)(code, format, markup, escape_fun)
-  )
+  ))
   p1 = escape_fun(getOption('prompt')); p2 = escape_fun(getOption('continue'))
   std = unlist(markup['DEFAULT', ])
   if (!any(is.na(std))) {
     p1 = paste0(std[1], p1, std[2]); p2 = paste0(std[1], p2, std[2])
   }
-  code = xfun::split_source(code)
-  sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
+  code = split_source(code)
+  res = sapply(mapply(hilight_one, code, MoreArgs = list(format, markup, escape_fun),
                 SIMPLIFY = FALSE, USE.NAMES = FALSE),
          function(x) paste0(rep(c(p1, p2), c(1L, length(x) - 1L)), x, collapse = '\n'))
+  raw_string(res)
 }
 # highlight one expression
 hilight_one = function(code, format, markup, escape_fun) {
@@ -220,7 +222,8 @@ hi_andre = function(code, language, format = 'html') {
   f = basename(tempfile('code', '.'))
   writeLines(code, f); on.exit(unlink(f))
   cmd = sprintf('%s -f -S %s -O %s %s', shQuote(h), correct_lang(language), format, f)
-  system(cmd, intern = TRUE)
+  res = system(cmd, intern = TRUE)
+  raw_string(res)
 }
 
 # to help knitr engines decide the highlight language
