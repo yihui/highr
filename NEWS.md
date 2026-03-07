@@ -1,6 +1,8 @@
+# CHANGES IN highr VERSION 0.13
+
 # CHANGES IN highr VERSION 0.12
 
-- `hilight()` returns results wrapped in `xfun::raw_string()` (for better more naturual printing behavior).
+- `hilight()` returns results wrapped in `xfun::raw_string()` (for more naturual printing behavior).
 
 # CHANGES IN highr VERSION 0.11
 
